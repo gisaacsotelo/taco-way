@@ -1,5 +1,7 @@
 # TACOWAY
 
+![taco]([http://url/to/img.png](https://images.squarespace-cdn.com/content/v1/5eb998968b5a4f0e02890384/1589224150640-JMLP5PUG0DNZAK8Z3OUR/_TACOSHO.png))
+
 ## Setup
 
 1. `npm install`
