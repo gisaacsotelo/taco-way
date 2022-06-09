@@ -24,6 +24,11 @@ server.get('/', (req, res) => {
   res.render('home')
 })
 
+server.get('/result', (req, res) => {
+
+  res.render('result')
+})
+
 // GET /Order page
 // server.get('/order', (req, res) => {
 //   return db.getAllMeats().then(allMeats) => {
