@@ -1,7 +1,7 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('express-handlebars')
-const db = require('../db')
+const db = require('./db')
 
 
 
