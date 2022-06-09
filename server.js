@@ -23,8 +23,15 @@ server.get('/', (req, res) => {
   res.render('home')
 })
 
+//POST /Home page
+
+server.post('/', (req, res) => {
+  const customer = req.body.name
+  res.redirect(`/orders/${costumer}`)
+})
+
 // GET /Order page
-server.get('/order', (req, res) => {
+server.get('/orders', (req, res) => {
   db.getAllMeats().then((allMeats) => {
     db.getAllVeggies().then((allVeggies) => {
       db.getAllSauces().then((allSauces) => {
