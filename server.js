@@ -1,9 +1,7 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('express-handlebars')
-const db = require('../db')
-
-
+const db = require('./db')
 
 // ------ SERVER SETUP ----------------
 
@@ -24,6 +22,12 @@ server.get('/', (req, res) => {
   //   const viewData = { fruits }
   //   res.render('fruits', viewData)
   // })
+})
+
+// GET /order/:name
+server.get('/order/:name', (req, res) => {
+  const customerName = req.params.name
+  res.send(`We are in order Homs ${customerName}`)
 })
 
 module.exports = server
