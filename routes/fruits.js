@@ -6,11 +6,10 @@ const router = express.Router()
 
 // GET /fruits
 router.get('/', (req, res) => {
-  db.getAllFruits()
-    .then((fruits) => {
-      const viewData = { fruits }
-      res.render('fruits', viewData)
-    })
+  return db.getAllFruits().then((fruits) => {
+    const viewData = { fruits }
+    res.render('fruits', viewData)
+  })
 })
 
 module.exports = router
