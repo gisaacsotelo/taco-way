@@ -1,8 +1,9 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('express-handlebars')
+const db = require('../db')
 
-const fruitRouter = require('./routes/fruits')
+
 
 // ------ SERVER SETUP ----------------
 
@@ -17,10 +18,12 @@ server.set('view engine', 'hbs')
 
 // ------ ROUTERS + ROUTES ------------
 
-server.use('/fruits', fruitRouter)
-
+// GET /ingridients
 server.get('/', (req, res) => {
-  res.redirect('/fruits')
+  // return db.getAllFruits().then((fruits) => {
+  //   const viewData = { fruits }
+  //   res.render('fruits', viewData)
+  // })
 })
 
 module.exports = server
