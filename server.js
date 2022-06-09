@@ -1,7 +1,7 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('express-handlebars')
-const db = require('../db')
+const db = require('./db')
 
 
 
@@ -18,12 +18,20 @@ server.set('view engine', 'hbs')
 
 // ------ ROUTERS + ROUTES ------------
 
-// GET /ingridients
+// GET /Home page
 server.get('/', (req, res) => {
-  // return db.getAllFruits().then((fruits) => {
-  //   const viewData = { fruits }
-  //   res.render('fruits', viewData)
-  // })
+
+  res.render('home')
 })
+
+// GET /Order page
+// server.get('/order', (req, res) => {
+//   return db.getAllMeats().then(allMeats) => {
+    
+//   }
+// })
+
+// GET / Result page
+
 
 module.exports = server
