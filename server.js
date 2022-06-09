@@ -20,7 +20,8 @@ server.set('view engine', 'hbs')
 
 // GET /Home page
 server.get('/', (req, res) => {
-  res.render('home', viewData)
+
+  res.render('home')
 })
 
 // GET /Order page
