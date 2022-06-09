@@ -1,4 +1,4 @@
-#// TACOWAY //#
+# TACOWAY
 
 ## Setup
 
