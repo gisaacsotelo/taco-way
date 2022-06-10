@@ -1,34 +1,27 @@
 <h2 class="secondary-title">Welcome {{customerName}}</h2>
 
-<form method="POST" action="/orders/{{name.customerName}}" class="form">
-  <label for="meat">Meat option</label>
+<form method="POST" action="/orders/{{customerName}}" class="form">
+  <label for="meat">Add some meat:</label>
   <select id="meat" name="meat">
     {{#each data.meats}}
     <option value="{{meat_id}}">{{meat_name}}</option>  
     {{/each}}
   </select>
+  <label for="veg">Add some veggies:</label>
   <select id="veg" name="veg">
     {{#each data.veggies}}
     <option value="{{veg_id}}">{{veg_name}}</option>
     {{/each}}
   </select>
+  <label for="sauce">Which sauce:</label>
   <select id="sauce" name="sauce">
     {{#each data.sauces}}
     <option value="{{sauce_id}}">{{sauce_name}}</option>
     {{/each}}
   </select>
-  {{!-- <label for="day">Day</label>
-  <select id="day" name="day">
-    {{#each days}}
-    <option value="{{value}}" {{selected}}>{{name}}</option>
-    {{/each}}
-  </select>
-
-  <label for="time">Time</label>
-  <input type="text" id="time" name="time" placeholder="Example: 1pm - 2pm"> --}}
-
+ 
   <div></div>
-  <button>Make my tacos</button>
+  <button>Make my taco</button>
 </form>
 
 {{!-- 
