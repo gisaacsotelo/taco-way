@@ -27,7 +27,7 @@ server.post('/', (req, res) => {
   res.redirect(`/orders/${customer}`)
 })
 
-// GET /Order page
+// GET /order/:name
 server.get('/orders/:name', (req, res) => {
   const customerName = req.params.name
   const dataView = {}
@@ -43,11 +43,19 @@ server.get('/orders/:name', (req, res) => {
 
         dataView.customerName = customerName
         dataView.data = viewTables
-        console.log(dataView)
+        // console.log(dataView)
         res.render('order', dataView)
       }) // end getAllSauces
     }) // end getAllVeggies
   }) // end getAllMeats
+})
+
+// POST /order/:name
+server.post('/orders/:name', (req, res) => {
+  const { meat, veg, sauce } = req.body
+  console.log(req.body)
+  console.log(meat)
+  res.render(`result`, req.body)
 })
 
 // GET / Result page
