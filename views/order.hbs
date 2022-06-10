@@ -7,12 +7,14 @@
     <option value="{{meat_id}}">{{meat_name}}</option>  
     {{/each}}
   </select>
+  <br>
   <label for="veg">Add some veggies:</label>
   <select id="veg" name="veg">
     {{#each data.veggies}}
     <option value="{{veg_id}}">{{veg_name}}</option>
     {{/each}}
   </select>
+  <br>
   <label for="sauce">Which sauce:</label>
   <select id="sauce" name="sauce">
     {{#each data.sauces}}
