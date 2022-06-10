@@ -49,7 +49,9 @@ server.get('/orders/:name', (req, res) => {
     }) // end getAllVeggies
   }) // end getAllMeats
 })
-
+// {meat_id: meat_id, veg_id: veg_id, sauce_id: sauce_id}
 // GET / Result page
+server.get('/result/', (req, res) => {
 
+})
 module.exports = server
