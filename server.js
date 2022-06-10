@@ -55,7 +55,7 @@ server.post('/orders/:name', (req, res) => {
   const { meat, veg, sauce } = req.body
   console.log(req.body)
   console.log(meat)
-  res.render(`result`, req.body)
+  res.render('result', req.body)
 })
 
 // GET / Result page
