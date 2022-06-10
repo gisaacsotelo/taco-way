@@ -89,7 +89,33 @@ server.post('/orders/:name', (req, res) => {
     sauce_id: sauceIdSelected,
   }
   console.log(selection)
-  res.render('result', selection)
+  const result = selection
+console.log(result)
+let aMeat = {}
+let aVeg = {}
+
+db.getMeatById(Number(result.meat_id))
+    .then((meat) => {
+      aMeat = meat
+      return db.getVeggiesById(Number(result.veg_id))
+    }) // end getAllMeats
+    .then((veg) => {
+      aVeg = veg
+      return db.getSaucesById(Number(result.sauce_id))
+    }) // end getAllVeggies
+    .then((sauce) => {
+      const selectIngred = {
+        meat: aMeat,
+        veg: aVeg,
+        sauce: sauce,
+      }
+      console.log(selectIngred)
+      res.render('result', selectIngred)
+    }) // end getAllSauces
+    .catch((err) => {
+      console.log(err)
+      res.send(`We got an error Homs`)
+    })
 })
 // {meat_id: meat_id, veg_id: veg_id, sauce_id: sauce_id}
 // GET / Result page
