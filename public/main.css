@@ -1,24 +1,38 @@
+html, body {
+  height: 100%;
+}
+
 body {
   background-image: url(./tacobackground.jpg) ;
   background-position:50% 50%;
   background-repeat: no-repeat;
-  margin: 0;
-  padding: 30px;
   background-color: #ffffff;
   color: rgb(255, 255, 255);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  min-height: 100vh;
+  font-family: 'Indie Flower';
   text-align: center;
+  padding-left: 30%;
+  padding-right: 30%;
+  height: 100%;
+  margin: 0;
+
+  display: flex;
+  flex-flow: column wrap;
+  font-size:x-large;
 }
 
-h1 {
-  color: black;
-  font-family: ;
+h3 {
+  font-size: x-large;
+
+  font-style: italic;
 }
 
 #container {
-  background-color: rgba(0, 0, 0, 0.641);
-  display: flex;
-  flex-flow: column wrap;
-  text-align: center;
+  background-color: rgba(0, 0, 0, 0.428);
+  flex: 1 0 auto;
+  padding-top: 5%;
+}
+
+#footer {
+  background-color: rgba(0, 0, 0, 0.428);
+  flex-shrink: 0;
 }
