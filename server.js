@@ -17,23 +17,39 @@ server.set('view engine', 'hbs')
 
 // GET /Home page
 server.get('/', (req, res) => {
-
   res.render('home')
 })
 
-// GET /order/:name
-server.get('/order/:name', (req, res) => {
-  const customerName = req.params.name
-  res.send(`We are in order Homs ${customerName}`)
+//POST /Home page
+
+server.post('/', (req, res) => {
+  const customer = req.body.name
+  res.redirect(`/orders/${customer}`)
 })
+
 // GET /Order page
-// server.get('/order', (req, res) => {
-//   return db.getAllMeats().then(allMeats) => {
-    
-//   }
-// })
+server.get('/orders/:name', (req, res) => {
+  const customerName = req.params.name
+  const dataView = {}
+
+  db.getAllMeats().then((allMeats) => {
+    db.getAllVeggies().then((allVeggies) => {
+      db.getAllSauces().then((allSauces) => {
+        const viewTables = {
+          meats: allMeats,
+          veggies: allVeggies,
+          sauces: allSauces,
+        }
+
+        dataView.customerName = customerName
+        dataView.data = viewTables
+        console.log(dataView)
+        res.render('order', dataView)
+      }) // end getAllSauces
+    }) // end getAllVeggies
+  }) // end getAllMeats
+})
 
 // GET / Result page
-
 
 module.exports = server
