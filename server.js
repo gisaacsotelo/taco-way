@@ -3,10 +3,7 @@ const express = require('express')
 const hbs = require('express-handlebars')
 const db = require('./db')
 
-
-
 // ------ SERVER SETUP ----------------
-
 const server = express()
 
 const publicFolder = path.join(__dirname, 'public')
@@ -27,23 +24,32 @@ server.get('/', (req, res) => {
 
 server.post('/', (req, res) => {
   const customer = req.body.name
-  res.redirect(`/orders/${costumer}`)
+  res.redirect(`/orders/${customer}`)
 })
 
 // GET /Order page
-server.get('/orders', (req, res) => {
+server.get('/orders/:name', (req, res) => {
+  const customerName = req.params.name
+  const dataView = {}
+
   db.getAllMeats().then((allMeats) => {
     db.getAllVeggies().then((allVeggies) => {
       db.getAllSauces().then((allSauces) => {
-        const viewTables = {meats: allMeats, veggies: allVeggies, sauces: allSauces}
-        console.log(viewTables)
-        res.render('orders', viewTables)
-      }) 
-    })
-  })
+        const viewTables = {
+          meats: allMeats,
+          veggies: allVeggies,
+          sauces: allSauces,
+        }
+
+        dataView.customerName = customerName
+        dataView.data = viewTables
+        console.log(dataView)
+        res.render('order', dataView)
+      }) // end getAllSauces
+    }) // end getAllVeggies
+  }) // end getAllMeats
 })
 
 // GET / Result page
-
 
 module.exports = server
