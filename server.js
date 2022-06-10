@@ -32,22 +32,50 @@ server.get('/orders/:name', (req, res) => {
   const customerName = req.params.name
   const dataView = {}
 
-  db.getAllMeats().then((allMeats) => {
-    db.getAllVeggies().then((allVeggies) => {
-      db.getAllSauces().then((allSauces) => {
-        const viewTables = {
-          meats: allMeats,
-          veggies: allVeggies,
-          sauces: allSauces,
-        }
+  //   db.getAllMeats().then((allMeats) => {
+  //     db.getAllVeggies().then((allVeggies) => {
+  //       db.getAllSauces().then((allSauces) => {
+  //         const viewTables = {
+  //           meats: allMeats,
+  //           veggies: allVeggies,
+  //           sauces: allSauces,
+  //         }
 
-        dataView.customerName = customerName
-        dataView.data = viewTables
-        console.log(`DATA VIEW :`, dataView)
-        res.render('order', dataView)
-      }) // end getAllSauces
+  //         dataView.customerName = customerName
+  //         dataView.data = viewTables
+  //         console.log(`DATA VIEW :`, dataView)
+  //         res.render('order', dataView)
+  //       }) // end getAllSauces
+  //     }) // end getAllVeggies
+  //   }) // end getAllMeats
+  // })
+  let meats = {}
+  let veg = {}
+  db.getAllMeats()
+    .then((allMeats) => {
+      meats = allMeats
+      return db.getAllVeggies()
+    }) // end getAllMeats
+    .then((allVeggies) => {
+      veg = allVeggies
+      return db.getAllSauces()
     }) // end getAllVeggies
-  }) // end getAllMeats
+    .then((allSauces) => {
+      const viewTables = {
+        meats: meats,
+        veggies: veg,
+        sauces: allSauces,
+      }
+
+      dataView.customerName = customerName
+      dataView.data = viewTables
+      console.log(`DATA VIEW :`, dataView)
+      res.render('order', dataView)
+    }) // end getAllSauces
+    .catch((err) => {
+      console.log(err)
+      res.send(`We got an error Homs`)
+    })
 })
 
 // POST /order/:name
