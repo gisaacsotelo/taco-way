@@ -43,7 +43,7 @@ server.get('/orders/:name', (req, res) => {
 
         dataView.customerName = customerName
         dataView.data = viewTables
-        // console.log(dataView)
+        console.log(`DATA VIEW :`, dataView)
         res.render('order', dataView)
       }) // end getAllSauces
     }) // end getAllVeggies
@@ -52,10 +52,16 @@ server.get('/orders/:name', (req, res) => {
 
 // POST /order/:name
 server.post('/orders/:name', (req, res) => {
-  const { meat, veg, sauce } = req.body
-  console.log(req.body)
-  console.log(meat)
-  res.render('result', req.body)
+  const meatIdSelected = req.body.meat
+  const vegIdSelected = req.body.veg
+  const sauceIdSelected = req.body.sauce
+  const selection = {
+    meat_id: meatIdSelected,
+    veg_id: vegIdSelected,
+    sauce_id: sauceIdSelected,
+  }
+  console.log(selection)
+  res.render('result', selection)
 })
 
 // GET / Result page
